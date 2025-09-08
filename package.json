@@ -6,7 +6,7 @@
     "copy-content": "node scripts/copy-content.mjs",
     "dev": "npm run copy-content && next dev",
     "build": "npm run copy-content && next build",
-    "start": "npx serve@latest out",
+    "start": "next start",
     "lint": "next lint",
     "test": "echo \"No tests\""
   },

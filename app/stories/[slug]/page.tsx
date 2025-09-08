@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import Image from 'next/image'
 
 export async function generateStaticParams() {
   const storiesDir = path.join(process.cwd(), 'content', 'stories')
@@ -12,7 +13,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params
   const storyDir = path.join(process.cwd(), 'content', 'stories', slug)
   const source = await fs.promises.readFile(path.join(storyDir, 'story.mdx'), 'utf8')
-  const { content } = await compileMDX({ source, options: { parseFrontmatter: true } })
+  const { content } = await compileMDX({ source, components: { Image }, options: { parseFrontmatter: true } })
   const archive = JSON.parse(await fs.promises.readFile(path.join(storyDir, 'archive.json'), 'utf8'))
   return (
     <main className="prose mx-auto p-4">
