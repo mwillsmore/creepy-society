@@ -17,7 +17,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
   const scaledHeight = height * 2
   return (
     <div
-      className="cursor-pointer [perspective:1000px] mx-auto"
+      className="cursor-pointer [perspective:1000px] mx-auto mt-4"
       style={{ width: scaledWidth, height: scaledHeight }}
       onClick={() => setFlipped(f => !f)}
     >
@@ -30,7 +30,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
             alt={alt}
             width={scaledWidth}
             height={scaledHeight}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 p-4 text-center text-black overflow-auto [transform:rotateY(180deg)] [backface-visibility:hidden]">
