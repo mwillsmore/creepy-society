@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
-import Image from 'next/image'
+import ComicPanel from '@/components/ComicPanel'
 
 export async function generateStaticParams() {
   const storiesDir = path.join(process.cwd(), 'content', 'stories')
@@ -13,13 +13,32 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params
   const storyDir = path.join(process.cwd(), 'content', 'stories', slug)
   const source = await fs.promises.readFile(path.join(storyDir, 'story.mdx'), 'utf8')
-  const { content } = await compileMDX({ source, components: { Image }, options: { parseFrontmatter: true } })
-  const archive = JSON.parse(await fs.promises.readFile(path.join(storyDir, 'archive.json'), 'utf8'))
+  interface ArchiveEntry {
+    panel: number
+    citation: string
+  }
+
+  const archive: ArchiveEntry[] = JSON.parse(await fs.promises.readFile(path.join(storyDir, 'archive.json'), 'utf8'))
+
+  interface WrapperProps {
+    panel: number
+    src: string
+    alt: string
+    width: number
+    height: number
+  }
+
+  const components = {
+    ComicPanel: (props: WrapperProps) => {
+      const historyEntry = archive.find(entry => entry.panel === Number(props.panel))
+      return <ComicPanel {...props} history={historyEntry?.citation ?? ''} />
+    }
+  }
+
+  const { content } = await compileMDX({ source, components, options: { parseFrontmatter: true } })
   return (
     <main className="prose mx-auto p-4">
       {content}
-      <h2 className="mt-8">Archive</h2>
-      <pre>{JSON.stringify(archive, null, 2)}</pre>
     </main>
   )
 }
