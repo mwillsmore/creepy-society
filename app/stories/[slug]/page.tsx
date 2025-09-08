@@ -37,7 +37,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
 
   const { content } = await compileMDX({ source, components, options: { parseFrontmatter: true } })
   return (
-    <main className="prose mx-auto p-4 text-center flex flex-col items-center">
+    <main className="prose mx-auto px-4 pt-8 text-center flex flex-col items-center">
       {content}
     </main>
   )
