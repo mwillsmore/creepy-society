@@ -12,7 +12,7 @@ Minimal comic site built with Next.js App Router, Tailwind CSS and MDX.
 
 Panel images live in `public/stories/<slug>` and are served with the Next.js `<Image>` component.
 
-Sample story demonstrates using the Next.js `<Image>` component and a panel image stored in `public/stories/sample/scarecrow.jpg`.
+Scarecrow story demonstrates using the Next.js `<Image>` component and a panel image stored in `public/stories/scarecrow/scarecrow.jpg`.
 
 ## Local development
 
@@ -21,7 +21,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000 to view the sample story.
+Open http://localhost:3000 to view the scarecrow story.
 
 ## Testing
 
