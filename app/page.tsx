@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
+import Image from 'next/image'
 import Link from 'next/link'
+import logo from '@/content/logo.png'
 
 async function getStories() {
   const storiesDir = path.join(process.cwd(), 'content', 'stories')
@@ -16,6 +18,7 @@ export default async function Home() {
   const stories = await getStories()
   return (
     <main className="p-4 prose">
+      <Image src={logo} alt="Site logo" className="mb-4" />
       <h1>Stories</h1>
       <ul>
         {stories.map(slug => (
