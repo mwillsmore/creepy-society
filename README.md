@@ -8,9 +8,12 @@ Minimal comic site built with Next.js App Router, Tailwind CSS and MDX.
 /content/stories/<slug>/
   story.mdx        # panels + text
   archive.json     # citations
+  cover.jpg        # thumbnail shown on homepage
 ```
 
 Panel images live in `public/stories/<slug>` and are served with the Next.js `<Image>` component.
+
+Each story should include a `cover.jpg` thumbnail in its folder. The `copy-content` script copies it to `public/stories/<slug>/cover.jpg` so the homepage carousel can load it. A resolution around 800px wide works well; the build will automatically create smaller sizes as needed.
 
 Scarecrow story demonstrates using the Next.js `<Image>` component and a panel image stored in `public/stories/scarecrow/scarecrow.jpg`.
 
