@@ -21,11 +21,14 @@ export default async function Home() {
       <Image src={logo} alt="Site logo" className="mb-4" />
       <h1>Stories</h1>
       <ul>
-        {stories.map(slug => (
-          <li key={slug}>
-            <Link href={`/stories/${slug}`}>{slug}</Link>
-          </li>
-        ))}
+        {stories.map(slug => {
+          const title = slug === 's-w' ? 'S&W' : slug
+          return (
+            <li key={slug}>
+              <Link href={`/stories/${slug}`}>{title}</Link>
+            </li>
+          )
+        })}
       </ul>
     </main>
   )
