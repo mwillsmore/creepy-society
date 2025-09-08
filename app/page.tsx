@@ -24,8 +24,8 @@ async function getStories(): Promise<Story[]> {
 export default async function Home() {
   const stories = await getStories()
   return (
-    <main className="p-4 prose">
-      <Image src={logo} alt="Site logo" className="mb-4" />
+    <main className="p-4 prose mx-auto text-center flex flex-col items-center">
+      <Image src={logo} alt="Site logo" className="mb-4 mx-auto" />
       <h1>Stories</h1>
       <StoryCarousel stories={stories} />
     </main>

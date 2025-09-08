@@ -9,8 +9,8 @@ export type Story = {
 
 export default function StoryCarousel({ stories }: { stories: Story[] }) {
   return (
-    <div className="overflow-x-auto">
-      <ul className="flex space-x-4 snap-x snap-mandatory">
+    <div className="overflow-x-auto mx-auto">
+      <ul className="flex justify-center space-x-4 snap-x snap-mandatory">
         {stories.map(({ slug, title, cover }) => (
           <li
             key={slug}
