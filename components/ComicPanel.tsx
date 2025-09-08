@@ -19,8 +19,8 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
         <div className="[backface-visibility:hidden]">
           <Image src={src} alt={alt} width={width} height={height} className="w-full h-auto" />
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-white p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <p>{history}</p>
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 p-4 text-center text-black [transform:rotateY(180deg)] [backface-visibility:hidden]">
+          <p className="font-comic">{history}</p>
         </div>
       </div>
     </div>
