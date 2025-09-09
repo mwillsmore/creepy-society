@@ -16,7 +16,7 @@ export default function StoryCarousel({ stories }: { stories: Story[] }) {
             key={slug}
             className="relative w-48 h-48 md:w-56 md:h-56 lg:w-60 lg:h-60 flex-shrink-0 snap-start"
           >
-            <Link href={`/stories/${slug}`} className="block w-full h-full">
+            <Link href={`/stories/${slug}/1`} className="block w-full h-full">
               <Image
                 src={`/stories/${slug}/${cover}`}
                 alt={title}
