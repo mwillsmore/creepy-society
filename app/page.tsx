@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import matter from 'gray-matter'
 import Image from 'next/image'
 import logo from '@/content/logo.png'
 import StoryCarousel, { Story } from '@/components/StoryCarousel'
@@ -8,14 +9,23 @@ async function getStories(): Promise<Story[]> {
   const storiesDir = path.join(process.cwd(), 'content', 'stories')
   try {
     const entries = await fs.promises.readdir(storiesDir, { withFileTypes: true })
-    return entries
-      .filter(e => e.isDirectory())
-      .map(e => {
-        const slug = e.name
-        const title = slug === 's-w' ? 'S&W' : slug
-        const cover = slug === 's-w' ? 's_and_w.jpg' : 'cover.jpg'
-        return { slug, title, cover }
-      })
+    return await Promise.all(
+      entries
+        .filter(e => e.isDirectory())
+        .map(async e => {
+          const slug = e.name
+          const storyPath = path.join(storiesDir, slug, 'story.mdx')
+          let title = slug
+          let cover = 'cover.jpg'
+          try {
+            const source = await fs.promises.readFile(storyPath, 'utf8')
+            const { data } = matter(source)
+            if (typeof data.title === 'string') title = data.title
+            if (typeof data.cover === 'string') cover = data.cover
+          } catch {}
+          return { slug, title, cover }
+        })
+    )
   } catch {
     return []
   }
