@@ -24,7 +24,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
       <div
         className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${flipped ? '[transform:rotateY(180deg)]' : ''}`}
       >
-        <div className="[backface-visibility:hidden] absolute inset-0">
+        <div className="[backface-visibility:hidden] absolute inset-0 w-full h-full">
           <Image
             src={src}
             alt={alt}
@@ -33,7 +33,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 p-4 text-center text-black overflow-auto [transform:rotateY(180deg)] [backface-visibility:hidden]">
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-100 p-4 text-center text-black overflow-auto [transform:rotateY(180deg)] [backface-visibility:hidden]">
           <p className="font-comic">{history}</p>
         </div>
       </div>
