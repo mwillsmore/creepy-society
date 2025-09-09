@@ -108,7 +108,10 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
 
   const { content } = await compileMDX({ source, components, options: { parseFrontmatter: true } })
   return (
-    <main className="prose mx-auto px-4 pt-8 text-center flex flex-col items-center">
+    <main className="prose mx-auto px-4 pt-8 flex flex-col text-left">
+      <Link href="/" className="fixed top-4 left-4 underline">
+        Back to main page
+      </Link>
       {content}
       <nav className="mt-8 w-full max-w-3xl flex justify-between">
         {prevLink ? (
