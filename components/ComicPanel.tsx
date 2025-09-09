@@ -17,7 +17,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
   const scaledHeight = height * 2
   return (
     <div
-      className="cursor-pointer [perspective:1000px] mx-auto mt-4"
+      className="cursor-pointer [perspective:1000px] inline-block m-4"
       style={{ width: scaledWidth, height: scaledHeight }}
       onClick={() => setFlipped(f => !f)}
     >
