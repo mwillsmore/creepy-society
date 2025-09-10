@@ -15,8 +15,7 @@ const PANEL_WIDTH = 800
 
 export default function ComicPanel({ src, alt, width, height, history }: ComicPanelProps) {
   const [flipped, setFlipped] = useState(false)
-  const scale = PANEL_WIDTH / width
-  const panelHeight = height * scale
+  const panelHeight = Math.round((height / width) * PANEL_WIDTH)
 
   return (
     <div
@@ -40,7 +39,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
           />
         </div>
         <div
-          className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-100 p-4 text-center text-black overflow-auto [transform:rotateY(180deg)] [backface-visibility:hidden]"
+          className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-100 p-4 text-center text-black overflow-auto [transform:rotateY(180deg)] [backface-visibility:hidden] box-border"
           style={{ width: PANEL_WIDTH, height: panelHeight }}
         >
           <p className="font-comic">{history}</p>
