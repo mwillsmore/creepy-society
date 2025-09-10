@@ -13,8 +13,6 @@ interface ComicPanelProps {
 
 export default function ComicPanel({ src, alt, width, height, history }: ComicPanelProps) {
   const [flipped, setFlipped] = useState(false)
-  const aspect = width / height
-
   return (
     <div className="not-prose">
       <div
