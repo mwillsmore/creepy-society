@@ -37,7 +37,7 @@ export default async function Home() {
     <main className="p-4 text-center flex flex-col items-center font-comic">
       <Image src={logo} alt="Site logo" className="mb-4 mx-auto" />
       <section className="mb-8 text-left max-w-3xl mx-auto">
-        <p className="text-xl text-[#704214]">
+        <p className="text-xl text-[#d9cfb5]">
           This site is a haunted rummage through time, dressed up like a comic strip
           and soaked in a bath of dread. Each story’s a grubby little relic — part
           horror tale, part half-remembered history lesson told by a drunk aunt with a
