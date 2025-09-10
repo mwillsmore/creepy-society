@@ -16,6 +16,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
 
   return (
     <div
+
       className={`cursor-pointer [perspective:1000px] inline-block m-4 w-full max-w-[800px] aspect-[${width}/${height}]`}
       onClick={() => setFlipped(f => !f)}
     >
