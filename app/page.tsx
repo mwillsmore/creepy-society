@@ -34,34 +34,26 @@ async function getStories(): Promise<Story[]> {
 export default async function Home() {
   const stories = await getStories()
   return (
-    <main className="p-4 text-center flex flex-col items-center">
+    <main className="p-4 text-center flex flex-col items-center font-comic">
       <Image src={logo} alt="Site logo" className="mb-4 mx-auto" />
-      <section className="prose mb-8 text-left max-w-3xl mx-auto">
-        <p>
-          This site is a haunted rummage through time, dressed up like a comic
-          strip and soaked in a bath of dread. Each story’s a grubby little relic
-          — part horror tale, part half-remembered history lesson told by a drunk
-          aunt with a twitch and a haunted VHS collection. Expect ghosts, curses,
-          and things that twitch in the corner of your eye. But none of it’s just
-          for show — there’s bone beneath the rot. Every tale’s pinned to a real
-          place, real events, or the kind of shared memory that clings to your
-          insides like damp wallpaper.
-        </p>
-        <p>
-          Read the comic first. Let it fester a bit. Let it crawl under your skin
-          and whisper to your nerves. Then flip it over, like a gravestone in the
-          mud, and find the archive: photos, documents, witness accounts. The
-          murky truth behind the monstrous fiction.
-        </p>
-        <p>
-          This isn’t just about a cheap scare. It’s about dragging the past into
-          the present by the ankles. It’s about memory as haunting, history as hex.
-          Because some ghosts don’t know they’re dead. And some of them are us.
-        </p>
-        <p>
-          Explore, wallow, get grubby. And remember: not all hauntings come with
-          chains and moans — some of them smell like fag smoke, spilled milk, and
-          last Thursday.
+      <section className="mb-8 text-left max-w-3xl mx-auto">
+        <p className="text-xl text-[#704214]">
+          This site is a haunted rummage through time, dressed up like a comic strip
+          and soaked in a bath of dread. Each story’s a grubby little relic — part
+          horror tale, part half-remembered history lesson told by a drunk aunt with a
+          twitch and a haunted VHS collection. Expect ghosts, curses, and things that
+          twitch in the corner of your eye. But none of it’s just for show — there’s
+          bone beneath the rot. Every tale’s pinned to a real place, real events, or
+          the kind of shared memory that clings to your insides like damp wallpaper.
+          Read the comic first. Let it fester a bit. Let it crawl under your skin and
+          whisper to your nerves. Then flip it over, like a gravestone in the mud, and
+          find the archive: photos, documents, witness accounts. The murky truth
+          behind the monstrous fiction. This isn’t just about a cheap scare. It’s
+          about dragging the past into the present by the ankles. It’s about memory as
+          haunting, history as hex. Because some ghosts don’t know they’re dead. And
+          some of them are us. Explore, wallow, get grubby. And remember: not all
+          hauntings come with chains and moans — some of them smell like fag smoke,
+          spilled milk, and last Thursday.
         </p>
       </section>
       <h1 className="text-3xl font-bold mb-4">Stories</h1>
