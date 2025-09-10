@@ -13,8 +13,6 @@ interface ComicPanelProps {
 
 export default function ComicPanel({ src, alt, width, height, history }: ComicPanelProps) {
   const [flipped, setFlipped] = useState(false)
-  const aspect = width / height
-
   return (
     <div
       className="cursor-pointer [perspective:1000px] block m-4 w-full max-w-[800px] relative"
@@ -22,7 +20,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
       onClick={() => setFlipped(f => !f)}
     >
       <div
-        className={`absolute inset-0 w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
+        className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
           flipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
