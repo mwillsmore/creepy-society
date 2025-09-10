@@ -95,14 +95,13 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
     panel: number
     src: string
     alt: string
-    width: number
-    height: number
   }
 
   const components = {
     ComicPanel: (props: WrapperProps) => {
       const historyEntry = archive.find(entry => entry.panel === Number(props.panel))
-      return <ComicPanel {...props} history={historyEntry?.citation ?? ''} />
+      const { src, alt } = props
+      return <ComicPanel src={src} alt={alt} history={historyEntry?.citation ?? ''} />
     }
   }
 
