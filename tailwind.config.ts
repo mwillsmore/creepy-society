@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        comic: ['"Comic Sans MS"', 'Comic Sans', 'cursive'],
+        comic: ['Bangers', 'cursive'],
       },
     },
   },
