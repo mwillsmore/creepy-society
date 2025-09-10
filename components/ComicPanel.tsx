@@ -10,19 +10,21 @@ interface ComicPanelProps {
 
 export default function ComicPanel({ src, alt, history }: ComicPanelProps) {
   const [flipped, setFlipped] = useState(false)
+
   return (
     <div className="not-prose">
       <div
-        className="cursor-pointer [perspective:1000px] block m-4 w-full max-w-[800px] mx-auto relative"
+        className="cursor-pointer [perspective:1000px] block m-4 w-full max-w-[800px] mx-auto"
         onClick={() => setFlipped(f => !f)}
       >
+        {/* wrapper that sizes itself based on the image’s natural aspect ratio */}
         <div
-          className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
+          className={`relative transition-transform duration-500 [transform-style:preserve-3d] ${
             flipped ? '[transform:rotateY(180deg)]' : ''
           }`}
         >
           {/* Front */}
-          <div className="[backface-visibility:hidden] absolute inset-0 flex items-center justify-center">
+          <div className="[backface-visibility:hidden]">
             <img
               src={src}
               alt={alt}
