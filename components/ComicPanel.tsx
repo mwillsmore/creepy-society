@@ -37,7 +37,7 @@ export default function ComicPanel({ src, alt, history }: ComicPanelProps) {
           </div>
           {/* Back */}
           <div className="absolute inset-0 flex items-start justify-start bg-white p-6 text-left text-black overflow-auto [transform:rotateY(180deg)] [backface-visibility:hidden]">
-            <p className="font-comic font-bold text-3xl sm:text-4xl md:text-5xl leading-tight m-0">{history}</p>
+            <p className="font-comic font-bold text-xl sm:text-2xl md:text-[2rem] leading-tight m-0">{history}</p>
           </div>
         </div>
       </div>
