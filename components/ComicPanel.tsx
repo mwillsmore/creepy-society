@@ -13,28 +13,30 @@ interface ComicPanelProps {
 
 export default function ComicPanel({ src, alt, width, height, history }: ComicPanelProps) {
   const [flipped, setFlipped] = useState(false)
+  const PANEL_WIDTH = 800
+  const scaledHeight = Math.round((height / width) * PANEL_WIDTH)
 
   return (
     <div className="not-prose">
       <div
-        className="cursor-pointer [perspective:1000px] block m-4 w-full max-w-[800px] relative"
-        style={{ aspectRatio: `${width} / ${height}` }}
+        className="cursor-pointer [perspective:1000px] block m-4 relative"
+        style={{ width: PANEL_WIDTH, height: scaledHeight }}
         onClick={() => setFlipped(f => !f)}
       >
         <div
-          className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
+          className={`absolute inset-0 w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
             flipped ? '[transform:rotateY(180deg)]' : ''
           }`}
         >
           {/* Front */}
-          <div className="[backface-visibility:hidden] absolute inset-0">
+          <div className="[backface-visibility:hidden] absolute inset-0 w-full h-full">
             <Image
               src={src}
               alt={alt}
-              fill
+              width={PANEL_WIDTH}
+              height={scaledHeight}
               priority
               className="object-contain"
-              sizes="(max-width: 800px) 100vw, 800px"
             />
           </div>
           {/* Back */}
