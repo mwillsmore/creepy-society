@@ -15,8 +15,8 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
   const [flipped, setFlipped] = useState(false)
   return (
     <div
-      className="cursor-pointer [perspective:1000px] inline-block m-4 w-full max-w-[800px] relative"
-      style={{ aspectRatio: `${width} / ${height}` }}
+      className="cursor-pointer [perspective:1000px] block m-4 w-full max-w-[800px] relative"
+      style={{ aspectRatio: aspect }}
       onClick={() => setFlipped(f => !f)}
     >
       <div
@@ -24,7 +24,7 @@ export default function ComicPanel({ src, alt, width, height, history }: ComicPa
           flipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
-        <div className="[backface-visibility:hidden] absolute inset-0 w-full h-full">
+        <div className="[backface-visibility:hidden] absolute inset-0">
           <Image
             src={src}
             alt={alt}
