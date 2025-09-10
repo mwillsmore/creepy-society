@@ -10,7 +10,6 @@ interface ComicPanelProps {
 
 export default function ComicPanel({ src, alt, history }: ComicPanelProps) {
   const [flipped, setFlipped] = useState(false)
-
   return (
     <div className="not-prose">
       <div
