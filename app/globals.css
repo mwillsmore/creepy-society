@@ -20,8 +20,15 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== Static fog background ===== */
+html, body, #__next {
+  height: 100%;
 }
+
+body {
+  margin: 0;
+  background: #000 url("/fog.jpg") center/cover no-repeat fixed;
+  color: #eaeaea;
+  overflow-x: hidden;
+}
+
