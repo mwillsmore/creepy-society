@@ -32,3 +32,69 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== Spooky background + blended fog (JPG-friendly) ===== */
+html, body, #__next { height: 100%; }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at center, #0b0b0b 0%, #000 70%);
+  /* Static gradient (no animation) to avoid grey “wipe” effect */
+  color: #eaeaea;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Layer 1: slow, wide drift */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: url("/fog.jpg");
+  background-repeat: repeat;
+  background-size: 900px 900px; /* tune to your texture scale */
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;              /* overall fog strength */
+  filter: blur(1px) contrast(105%) brightness(115%);
+  will-change: transform;
+}
+
+/* If your fog.jpg has a BLACK background with white/grey fog, keep SCREEN. 
+   If it has a WHITE background with darker fog, switch to MULTIPLY instead. */
+body::before,
+body::after {
+  mix-blend-mode: screen;   /* use 'multiply' if fog has white bg */
+}
+
+/* Two layers with different motion for depth */
+body::before {
+  animation: fogDriftA 140s linear infinite;
+  transform: translate3d(0,0,0) scale(1.1);
+}
+body::after {
+  opacity: 0.25; /* slightly lighter second layer */
+  animation: fogDriftB 110s linear infinite;
+  transform: translate3d(0,0,0) scale(1.15);
+}
+
+@keyframes fogDriftA {
+  0%   { transform: translate3d(-6%, -6%, 0) scale(1.1); }
+  50%  { transform: translate3d( 6%,  4%, 0) scale(1.12); }
+  100% { transform: translate3d(-6%, -6%, 0) scale(1.1); }
+}
+@keyframes fogDriftB {
+  0%   { transform: translate3d( 5%, -4%, 0) scale(1.15); }
+  50%  { transform: translate3d(-5%,  6%, 0) scale(1.18); }
+  100% { transform: translate3d( 5%, -4%, 0) scale(1.15); }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none; }
+}
+
+
