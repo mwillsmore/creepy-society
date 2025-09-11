@@ -3,6 +3,7 @@ import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import ComicPanel from '@/components/ComicPanel'
 import Link from 'next/link'
+import type { JSX } from 'react'
 
 async function getPageNumbers(storyDir: string): Promise<number[]> {
   const files = await fs.promises.readdir(storyDir)
@@ -110,12 +111,15 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
           history={historyEntry?.citation ?? ''}
         />
       )
-    }
+    },
+    h1: (props: JSX.IntrinsicElements['h1']) => (
+      <h1 {...props} className={`text-center text-5xl ${props.className ?? ''}`} />
+    )
   }
 
   const { content } = await compileMDX({ source, components, options: { parseFrontmatter: true } })
   return (
-    <main className="prose mx-auto px-4 pt-8 flex flex-col text-left">
+    <main className="prose mx-auto px-4 pt-8 flex flex-col">
       <Link href="/" className="fixed top-4 left-4 underline">
         Back to main page
       </Link>
