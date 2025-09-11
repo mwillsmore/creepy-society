@@ -110,12 +110,15 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
           history={historyEntry?.citation ?? ''}
         />
       )
-    }
+    },
+    h1: (props: JSX.IntrinsicElements['h1']) => (
+      <h1 {...props} className={`text-center text-5xl ${props.className ?? ''}`} />
+    )
   }
 
   const { content } = await compileMDX({ source, components, options: { parseFrontmatter: true } })
   return (
-    <main className="prose mx-auto px-4 pt-8 flex flex-col text-left prose-h1:text-center prose-h1:text-5xl">
+    <main className="prose mx-auto px-4 pt-8 flex flex-col">
       <Link href="/" className="fixed top-4 left-4 underline">
         Back to main page
       </Link>
