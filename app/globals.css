@@ -20,9 +20,9 @@
   }
 }
 
-/* ===== Simple static fog background ===== */
+/* === Simple static fog background (full height on mobile & desktop) === */
 html, body, #__next {
-  /* Ensure background covers full screen height while allowing page to grow */
+  /* ensure body and root always fill at least the full viewport height */
   min-height: 100vh;
   height: auto;
   margin: 0;
@@ -30,7 +30,7 @@ html, body, #__next {
 
 body {
   background: #000 url("/fog.jpg") center center / cover no-repeat;
-  background-attachment: fixed; /* keep background steady on mobile */
-  color: #eaeaea; /* light text for dark background */
+  background-attachment: fixed; /* keeps background steady during scroll */
+  color: #eaeaea;               /* light text for dark background */
 }
 
