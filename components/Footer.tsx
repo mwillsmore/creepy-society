@@ -7,8 +7,8 @@ export default function Footer() {
       <Image
         src="/SW-productions.png"
         alt="S&W Productions logo"
-        width={48}
-        height={48}
+        width={144}
+        height={144}
         className="ml-[50px]"
       />
     </footer>
