@@ -3,6 +3,7 @@ import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import ComicPanel from '@/components/ComicPanel'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { JSX } from 'react'
 
 async function getPageNumbers(storyDir: string): Promise<number[]> {
@@ -120,21 +121,21 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
   const { content } = await compileMDX({ source, components, options: { parseFrontmatter: true } })
   return (
     <main className="prose mx-auto px-4 pt-8 flex flex-col">
-      <Link href="/" className="fixed top-4 left-4 underline">
-        Back to main page
+      <Link href="/" className="fixed top-4 left-4">
+        <Image src="/home.png" alt="Home" width={424} height={467} className="h-10 w-auto" />
       </Link>
       {content}
-      <nav className="mt-8 w-full max-w-3xl flex justify-between">
+      <nav className="mt-8 w-full flex justify-between">
         {prevLink ? (
-          <Link href={prevLink} className="underline">
-            Previous
+          <Link href={prevLink}>
+            <Image src="/previous.png" alt="Previous" width={454} height={454} className="h-10 w-auto" />
           </Link>
         ) : (
           <span />
         )}
         {nextLink ? (
-          <Link href={nextLink} className="underline">
-            Next
+          <Link href={nextLink}>
+            <Image src="/next.png" alt="Next" width={482} height={437} className="h-10 w-auto" />
           </Link>
         ) : (
           <span />
