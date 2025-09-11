@@ -35,8 +35,12 @@ export default async function Home() {
   const stories = await getStories()
   return (
     <main className="p-4 text-center flex flex-col items-center font-comic">
-      <Image src={logo} alt="Site logo" className="mb-4 mx-auto" />
-      <section className="mb-8 text-left max-w-3xl mx-auto">
+      <Image
+        src={logo}
+        alt="Site logo"
+        className="mb-4 mx-auto w-full max-w-[800px] h-auto"
+      />
+      <section className="mb-8 text-left max-w-[800px] mx-auto">
         <p className="text-xl text-[#d9cfb5]">
           Creepy Society is a haunted rummage through time, dressed up like a comic strip
           and soaked in a bath of dread. Each story’s a grubby little relic — part horror
