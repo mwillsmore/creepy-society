@@ -3,6 +3,7 @@ import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import ComicPanel from '@/components/ComicPanel'
 import Link from 'next/link'
+import type { JSX } from 'react'
 
 async function getPageNumbers(storyDir: string): Promise<number[]> {
   const files = await fs.promises.readdir(storyDir)
