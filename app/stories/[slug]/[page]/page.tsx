@@ -125,7 +125,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
         <Image src="/home.png" alt="Home" width={424} height={467} className="h-10 w-auto" />
       </Link>
       {content}
-      <nav className="mt-8 w-full flex justify-between">
+      <nav className="mt-8 w-full max-w-[800px] mx-auto flex justify-between px-4">
         {prevLink ? (
           <Link href={prevLink}>
             <Image src="/previous.png" alt="Previous" width={454} height={454} className="h-10 w-auto" />
