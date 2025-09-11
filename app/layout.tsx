@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="text-foreground flex flex-col text-center">
-        <main style={{ position: 'relative', zIndex: 1 }}>
+        <main>
           {children}
           <Footer />
         </main>
