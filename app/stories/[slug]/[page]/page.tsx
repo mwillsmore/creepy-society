@@ -85,6 +85,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
 
   interface ArchiveEntry {
     panel: number
+    title: string
     citation: string
   }
   const archive: ArchiveEntry[] = JSON.parse(
@@ -102,7 +103,13 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
   const components = {
     ComicPanel: (props: WrapperProps) => {
       const historyEntry = archive.find(entry => entry.panel === Number(props.panel))
-      return <ComicPanel {...props} history={historyEntry?.citation ?? ''} />
+      return (
+        <ComicPanel
+          {...props}
+          title={historyEntry?.title ?? ''}
+          history={historyEntry?.citation ?? ''}
+        />
+      )
     }
   }
 
