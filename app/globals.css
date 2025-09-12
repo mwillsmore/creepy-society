@@ -20,17 +20,16 @@
   }
 }
 
-/* === Simple static fog background (full height on mobile & desktop) === */
+/* === Simple static fog background (Safari-safe) === */
 html, body, #__next {
-  /* ensure body and root always fill at least the full viewport height */
   min-height: 100vh;
   height: auto;
   margin: 0;
+  width: 100%;
 }
 
 body {
   background: #000 url("/fog.jpg") center center / cover no-repeat;
-  background-attachment: fixed; /* keeps background steady during scroll */
-  color: #eaeaea;               /* light text for dark background */
+  background-attachment: scroll; /* fixes Safari first-load bug */
+  color: #eaeaea;
 }
-
